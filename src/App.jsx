@@ -1,11 +1,20 @@
 
 import './App.css'
+import Main from './Components/Main'
+import SideBar from './Components/SideBar'
+import TopBar from './Components/TopBar'
+
+import WorkSpace from './Components/WorkSpace'
 
 function App() {
 
   return (
     <div className='app'>
-      <h1>SRIRAM GOKUL</h1>
+      <WorkSpace>
+        <TopBar>TopBar</TopBar>
+        <SideBar>SideBar</SideBar>
+        <Main>MainBar</Main>
+      </WorkSpace>
     </div>
   )
 }

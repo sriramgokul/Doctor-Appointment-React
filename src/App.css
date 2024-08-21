@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.top-bar{
+    grid-area: top;
+    background-color: bisque;
+}
+.work-space{
+    display: grid;
+    grid-template:
+    "top top top top top" 10vh
+    "side main main main main" 90vh;
+}
+.side-bar{
+    grid-area:side;
+    background-color: aqua;
+}
+.main-bar{
+    grid-area: main;
+    background-color: blue;
+}
