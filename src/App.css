@@ -3,7 +3,7 @@
     padding: 0;
     text-align: center;
 }
-.top-bar{
+/* .top-bar{
     grid-area: top;
     background-color: bisque;
 }
@@ -13,11 +13,28 @@
     "top top top top top" 10vh
     "side main main main main" 90vh;
 }
-.side-bar{
-    grid-area:side;
-    background-color: aqua;
-}
+
 .main-bar{
     grid-area: main;
     background-color: blue;
-}
+} */
+.side-bar{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .actions{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: stretch;
+    gap: 5rem;
+ }
+ .main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+ }
