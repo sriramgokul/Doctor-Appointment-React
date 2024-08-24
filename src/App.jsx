@@ -13,7 +13,7 @@ function App() {
       <WorkSpace>
         <TopBar>TopBar</TopBar>
         <SideBar>SideBar</SideBar>
-        <Main>MainBar</Main>
+        <Main>MainBarr</Main>
       </WorkSpace>
     </div>
   )
