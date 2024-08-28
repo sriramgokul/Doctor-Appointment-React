@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function AddDoctor({doctorData,SetDoctorData}){
     const[docName,setDocName]= useState("");
     const[hospitalName,setHospitalName]=useState("");
     const[specialization,setSpecialization]= useState("");
+    const navigate = useNavigate()
 
     const addnewDoctorDetails= () =>{
         const newDoctorDetails = {
@@ -13,6 +15,7 @@ function AddDoctor({doctorData,SetDoctorData}){
             status : "Available",
         }
         SetDoctorData([...doctorData, newDoctorDetails]);
+        navigate("/");
 
     }
     return(

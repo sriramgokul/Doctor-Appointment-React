@@ -1,26 +1,10 @@
 import { useState } from "react";
-import AddDoctor from "./AddDoctor";
-import EditDoctor from "./EditDoctor";
+import { useNavigate } from "react-router";
 
-function Main(){
-    const data = [
-        {
-            doc_name:"DEEPSHANA AMILIA",
-            hospital_name:"Apollo",
-            specialization : "Heart Surgeon",
-            status : "Available",
-        },
-        {
-            doc_name:"RAMYA RAKSHANA",
-            hospital_name:"Kaveri",
-            specialization : "Eye Surgeon",
-            status : "Not Available",
-        },
+function Main({doctorData, SetDoctorData}){
 
-    ];
-    const [doctorData, SetDoctorData]= useState(data);
-    const [showForm,setShowForm] = useState(true);
-    const [editId,setEditId]= useState();
+    const navigate = useNavigate();
+
     // Deleting the Card in UI
     function deleteDoctorDetails(idx){
         const remainingDoctors= doctorData.filter((docInfo,id)=>(idx !=id))
@@ -29,13 +13,15 @@ function Main(){
         
     // Handling Edit Button
     function handleEdit(id){
-        setShowForm(false)
-        setEditId(id)
+        navigate(`/edit/doc/${id}`)
     }  
 
     return(
         <div className="main">
-            {showForm == true ? <AddDoctor doctorData={doctorData} SetDoctorData={SetDoctorData}/>:<EditDoctor doctorData={doctorData} SetDoctorData={SetDoctorData} showForm={showForm} setShowForm={setShowForm} editId={editId}/> }
+            <div className="grid justify-end p-2">
+                <button className="btn btn-primary w-24" onClick={()=> navigate("/add/doc")}>Add Doctor</button>
+            </div>
+            {/* {showForm == true ? <AddDoctor doctorData={doctorData} SetDoctorData={SetDoctorData}/>:<EditDoctor doctorData={doctorData} SetDoctorData={SetDoctorData} showForm={showForm} setShowForm={setShowForm} editId={editId}/> } */}
             
             {
                 doctorData && (
@@ -61,7 +47,7 @@ function Main(){
 
                             </select>
                             <div className="card-actions justify-end">
-                            <button className="btn btn-primary" onClick={()=>handleEdit(idx)}>EDIT</button>
+                            <button className= "btn btn-primary"  onClick={()=>handleEdit(idx)}>EDIT</button>
                              {/* While passsing aruguments to a "onclick" event via a function,we must write like this only--()=> */}
                             <button className="btn btn-error" onClick={()=>deleteDoctorDetails(idx)}>DELETE</button>
                 

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-function EditDoctor({doctorData,SetDoctorData,showForm,setShowForm,editId}){
+function EditDoctor({doctorData,SetDoctorData,editId}){
     const[docName,setDocName]= useState("");
     const[hospitalName,setHospitalName]=useState("");
     const[specialization,setSpecialization]= useState("");
     const[docstatus,setDocStatus] = useState("");
-    
+    const navigate = useNavigate();
     useEffect(()=>{
         const selectedDoctor = doctorData.filter((doc,idx)=> idx == editId)
         setDocName(selectedDoctor[0].doc_name);
@@ -23,7 +24,7 @@ function EditDoctor({doctorData,SetDoctorData,showForm,setShowForm,editId}){
         }
         doctorData[editId] = editedDoctor;
         SetDoctorData([...doctorData])
-        setShowForm(!showForm);
+        navigate("/")
         
     }
     return(
