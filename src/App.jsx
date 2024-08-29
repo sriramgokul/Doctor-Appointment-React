@@ -5,6 +5,7 @@ import DocAdd from './Pages/DocAdd';
 import DocEdit from './Pages/DocEdit';
 import { useState } from 'react';
 import NoPage from './Pages/NoPage';
+import { AppState } from './Context/AppContext';
 
 function App() {
   const data = [
@@ -23,10 +24,10 @@ function App() {
 
 ];
   const [doctorData, SetDoctorData]= useState(data);
-
+  const {theme} = AppState();
 
   return (
-    <div className='app'>
+    <div className='app' data-theme={theme}>
       <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<DocDash doctorData={doctorData} SetDoctorData={SetDoctorData}/>}/>
@@ -35,6 +36,7 @@ function App() {
         <Route path='*' element={<NoPage/>}/>
       </Routes>
       </BrowserRouter>
+      
     </div>
   )
 }
