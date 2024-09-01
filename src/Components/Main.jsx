@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { deleteDoctor } from "../Helpers/helper";
 
 function Main({doctorData, SetDoctorData}){
 
     const navigate = useNavigate();
 
     // Deleting the Card in UI
-    function deleteDoctorDetails(idx){
-        const remainingDoctors= doctorData.filter((docInfo,id)=>(idx !=id))
-        SetDoctorData(remainingDoctors);
+    function deleteDoctorDetails(id){
+        deleteDoctor(id).then((data)=>{
+            if(data){
+                const remainingDoctors= doctorData.filter((docInfo)=>docInfo.id != id);
+            SetDoctorData([...remainingDoctors]);
+
+            }else{
+                console.log("Error deleting Data")
+            }
+        })
+        
         }
         
     // Handling Edit Button
@@ -49,7 +58,7 @@ function Main({doctorData, SetDoctorData}){
                             <div className="card-actions justify-end">
                             <button className= "btn btn-primary"  onClick={()=>handleEdit(idx)}>EDIT</button>
                              {/* While passsing aruguments to a "onclick" event via a function,we must write like this only--()=> */}
-                            <button className="btn btn-error" onClick={()=>deleteDoctorDetails(idx)}>DELETE</button>
+                            <button className="btn btn-error" onClick={()=>deleteDoctorDetails(docInfo.id)}>DELETE</button>
                 
                             </div>
                         </div>

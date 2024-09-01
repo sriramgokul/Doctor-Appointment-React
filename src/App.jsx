@@ -3,28 +3,21 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import DocDash from './Pages/DocDash';
 import DocAdd from './Pages/DocAdd';
 import DocEdit from './Pages/DocEdit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NoPage from './Pages/NoPage';
 import { AppState } from './Context/AppContext';
+import { getAllDoctor } from './Helpers/helper';
 
 function App() {
-  const data = [
-    {
-        doc_name:"DEEPSHANA AMILIA",
-        hospital_name:"Apollo",
-        specialization : "Heart Surgeon",
-        status : "Available",
-    },
-    {
-        doc_name:"RAMYA RAKSHANA",
-        hospital_name:"Kaveri",
-        specialization : "Eye Surgeon",
-        status : "Not Available",
-    },
-
-];
-  const [doctorData, SetDoctorData]= useState(data);
+  
+  const [doctorData, SetDoctorData]= useState();
+ useEffect(()=>{
+    getAllDoctor().then((data)=>{
+      SetDoctorData(data);
+    })
+ },[])
   const {theme} = AppState();
+ 
 
   return (
     <div className='app' data-theme={theme}>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { addNewDoctors } from "../Helpers/helper";
 
 function AddDoctor({doctorData,SetDoctorData}){
     const[docName,setDocName]= useState("");
@@ -13,9 +14,16 @@ function AddDoctor({doctorData,SetDoctorData}){
             hospital_name: hospitalName,
             specialization,
             status : "Available",
-        }
-        SetDoctorData([...doctorData, newDoctorDetails]);
-        navigate("/");
+        };
+        addNewDoctors(newDoctorDetails).then((data)=>{
+            if(data){
+                SetDoctorData([...doctorData, newDoctorDetails]);
+                navigate("/");
+            }else{
+                console.log("Sorry cannot add new Doctor")
+            }
+        })
+       
 
     }
     return(
