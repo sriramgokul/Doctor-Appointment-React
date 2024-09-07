@@ -23,7 +23,7 @@ export async function deleteDoctor(id){
 export async function addNewDoctors(newObj){
     const res = await fetch(`${API}`,{
         method: "POST",
-        body: JSON.stringify(),
+        body: JSON.stringify(newObj),
         headers: {
             "Content-type": "application/json",
         },
