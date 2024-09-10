@@ -1,5 +1,6 @@
 import { API } from "./API.JS";
 
+// To get Data from API
 export async function getAllDoctor(){
             const res = await fetch(API,{
                 method: "GET",
@@ -9,6 +10,7 @@ export async function getAllDoctor(){
 
 }
 
+// To delete data from API
 export async function deleteDoctor(id){
     const res = await fetch(`${API}/${id}`,{
         method: "DELETE",
@@ -20,6 +22,8 @@ export async function deleteDoctor(id){
     return data;
 }
 
+
+// To add a new data inside API
 export async function addNewDoctors(newObj){
     const res = await fetch(`${API}`,{
         method: "POST",
@@ -32,6 +36,7 @@ export async function addNewDoctors(newObj){
     return data;
 }
 
+//  update a data and then send it to the API 
 export async function editNewDoctor(id,editDoc){
     const res = await fetch(`${API}/${id}`,{
         method:"PUT",

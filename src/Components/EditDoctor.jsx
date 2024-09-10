@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { editNewDoctor } from "../Helpers/helper";
 
 function EditDoctor({doctorData,SetDoctorData,editId}){
     const[docName,setDocName]= useState("");
     const[hospitalName,setHospitalName]=useState("");
     const[specialization,setSpecialization]= useState("");
     const[docstatus,setDocStatus] = useState("");
+    const [index,setIndex] = useState();
     const navigate = useNavigate();
     useEffect(()=>{
-        const selectedDoctor = doctorData.filter((doc,idx)=> idx == editId)
+        const selectedDoctor = doctorData.filter((doc)=> doc.id == editId)
+        const selectedDocIndex = doctorData.findIndex((doc)=> doc.id == editId)
+        setIndex(selectedDocIndex);
         setDocName(selectedDoctor[0].doc_name);
         setHospitalName(selectedDoctor[0].hospital_name)
         setSpecialization(selectedDoctor[0].specialization)
@@ -21,10 +25,17 @@ function EditDoctor({doctorData,SetDoctorData,editId}){
             doc_name : docName,
             hospital_name : hospitalName,
             specialization,
-        }
-        doctorData[editId] = editedDoctor;
-        SetDoctorData([...doctorData])
-        navigate("/")
+        };
+        editNewDoctor(editId,editedDoctor).then((data)=>{
+            if(data){
+                doctorData[index] = editedDoctor;
+                SetDoctorData([...doctorData])
+                navigate("/")
+            }else{
+                console.log("Error Occured")
+            }
+        })
+        
         
     }
     return(

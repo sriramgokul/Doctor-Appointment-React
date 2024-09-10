@@ -56,7 +56,7 @@ function Main({doctorData, SetDoctorData}){
 
                             </select>
                             <div className="card-actions justify-end">
-                            <button className= "btn btn-primary"  onClick={()=>handleEdit(idx)}>EDIT</button>
+                            <button className= "btn btn-primary"  onClick={()=>handleEdit(docInfo.id)}>EDIT</button>
                              {/* While passsing aruguments to a "onclick" event via a function,we must write like this only--()=> */}
                             <button className="btn btn-error" onClick={()=>deleteDoctorDetails(docInfo.id)}>DELETE</button>
                 
