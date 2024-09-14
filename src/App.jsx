@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import NoPage from './Pages/NoPage';
 import { AppState } from './Context/AppContext';
 import { getAllDoctor } from './Helpers/helper';
+import StatePage from './Pages/statePage';
+import CallBackPage from './Pages/CallBackPages';
 
 function App() {
   
@@ -26,6 +28,8 @@ function App() {
         <Route exact path="/" element={<DocDash doctorData={doctorData} SetDoctorData={SetDoctorData}/>}/>
         <Route path='/add/doc' element={<DocAdd doctorData={doctorData} SetDoctorData={SetDoctorData}/>}/>
         <Route path='/edit/doc/:id' element={<DocEdit doctorData={doctorData} SetDoctorData={SetDoctorData}/>}/>
+        <Route path='/usememo' element={<StatePage/>}/>
+        <Route path='/callback' element={<CallBackPage/>}/>
         <Route path='*' element={<NoPage/>}/>
       </Routes>
       </BrowserRouter>
