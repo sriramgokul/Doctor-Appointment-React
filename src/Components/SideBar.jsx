@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { logoutUser } from "../Reducers/loginReducer";
-
+import { logOutUsers } from "../Reducers/loginReducer";
 function SideBar(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {username} = useSelector((state)=> state.loginOperation.data)
+    const {username} = useSelector((sri)=> sri.loginOperation.data)
+    console.log(username);
 
+    
     return(
         <div className="side-bar">
             <ul className="actions">
@@ -15,7 +16,7 @@ function SideBar(){
                 <li><button className="btn btn-primary w-28" onClick={()=>navigate("/usememo")}>Use Memo</button></li>
                 <li><button className="btn btn-primary w-28" onClick={()=>navigate("/callback")}>CallBack</button></li>
                 <li><button className="btn btn-primary w-28" onClick={()=>navigate("/login")}>Login</button></li>
-                <li><button className="btn btn-primary w-28" onClick={()=> dispatch(logoutUser())}>Logout</button></li>
+                <li><button className="btn btn-primary w-28" onClick={()=>dispatch(logOutUsers())}>Logout</button></li>
             </ul>
         </div>
     )

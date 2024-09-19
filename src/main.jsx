@@ -7,13 +7,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import loginReducer from './Reducers/loginReducer.js'
 
-// const store = configureStore({
-//   reducer: {},
-// })
 const store = configureStore({
-  reducer: {
-    loginOperation: loginReducer
-  },
+  reducer:{
+    loginOperation : loginReducer,
+  }
 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -24,5 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </AppContext>
     </Provider>
     
-  </React.StrictMode>,
+      
+  </React.StrictMode>, 
 )
